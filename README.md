@@ -92,7 +92,7 @@ If you want to make additional changes to the existing source, make sure to call
 After creating/updates the source, make sure to visit the PipelineSources page in the pipelines UI to make sure sync was successful
 
 
-# FAQs and Common errors
+# FAQs and Common Errors
 - If you get a "409 validation error" when running a "createPipelineSource" script, it likely means you need to pick a unique name for the `pipelineSourceName` field
 - If your creation succeeds, but your sync fails, see the logs in the UI for more details
 - If you lose your pipelineSourceId for a particular source, you can always find it again by calling the `GET /pipelineSources?names=<the name>`
