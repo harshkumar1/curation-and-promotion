@@ -21,9 +21,9 @@ pipelinesYmlPropertyBag:
     artifactoryRepositories:
       # the virtual repo the encompasses one or more remote RPM repositories.
       # this is the repository from which the curation flow will start
-      virtualRPMRpoName: &virtualRepoName 'pip-rpm-virtual'
+      virtualRepoName: &virtualRepoName 'pip-rpm-virtual'
       # this local repository is where curated artifacts from the virtual will be copied
-      devRPMRepoName: &devRepoName 'pip-rpm-dev-local'
+      devRepoName: &devRepoName 'pip-rpm-dev-local'
       # the "production" repository to hold packages promoted from the dev repo
       prodRPMRepoName: &prodRepoName 'pip-rpm-prod-local'
 
