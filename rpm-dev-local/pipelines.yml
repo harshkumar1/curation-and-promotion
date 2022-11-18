@@ -38,12 +38,10 @@ pipelinesYmlPropertyBag:
       # this is for a "PropertyBag" resource.
       # at the end of the "curation" workflow, the list of coped files will be written
       # to this resource.  The "promote and distribute" workflow can then use this directly
-      # it will contain a parameter called "fileList" which will be a comma separated list
+      # it will contain a parameter called "resourceList" which will be a comma separated list
       # of file paths
-
       ### example contents
-      # {"file_list": ["pipe-rpm-virtual/a.rpm","pip-rpm-virtual/b.rpm"]}
-      # The URL to send the payload to can be found on the details page for the webhook integration
+      # {"resourceList": "pipe-rpm-virtual/a.rpm,pip-rpm-virtual/b.rpm"}
       curationResourceName: &curationResName 'curated_list'
 
       # the name of the BuildInfo resource to hold build information from the dev repository
@@ -55,8 +53,9 @@ pipelinesYmlPropertyBag:
       # the name of the ReleaseBundle resource that is created to contain the artifacts from file_list
       prodRepoBundleName: &prodRepoBundle 'prod_repo_bundle'
 
-      # These resources contains the rules for distribution. In this example
+      # These resources contain the rules for distribution. In this example
       # distribution is split between 2 sites, so each site has its own "DistributionRule" resource
+      # see https://www.jfrog.com/confluence/display/JFROG/DistributionRule
       primarySiteDistRuleName: &siteARuleName 'site_A_rule'
       secondarySiteDistRuleName: &siteBRuleName 'site_B_rule'
 

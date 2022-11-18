@@ -10,20 +10,36 @@ Before you can create a pipeline from this project, you must complete the follow
 ## create the following pipelines integrations
   - [Artifactory](https://www.jfrog.com/confluence/display/JFROG/Artifactory+Integration)
   - [Distribution](https://www.jfrog.com/confluence/display/JFROG/Distribution+Integration)
-Once created, add their names to the pipeline.yml in the `integrationDetails` section
+
+Once created, add their names to the pipelines.yml in the `integrationDetails` section
 
 ## create the following artifactory repositories
 note: adjust the names as needed. This step could also be done in the UI directly
 ### rpm-dev-local
-    `jf rt repo-create template.json` where template.json is `{"key":"rpm-dev-local","packageType":"rpm","rclass":"local"}`
+```sh
+echo '{"key":"rpm-dev-local","packageType":"rpm","rclass":"local"}' > template.json
+jf rt repo-create template.json
+```
+
 ### rpm-prod-local
-    `jf rt repo-create template.json` where template.json is `{"key":"rpm-prod-local","packageType":"rpm","rclass":"local"}`
+```sh
+echo '{"key":"rpm-prod-local","packageType":"rpm","rclass":"local"}' > template.json
+jf rt repo-create template.json
+```
+
 ### rpm-remote
-    `jf rt repo-create template.json` where template.json is `{"key":"rpm-remote","packageType":"rpm","rclass":"remote","url":"http://mirror.genesisadaptive.com/fedora/linux"}`
-### npm-virtual (optional)
+```sh
+echo '{"key":"rpm-remote","packageType":"rpm","rclass":"remote","url":"http://mirror.genesisadaptive.com/fedora/linux"}' > template.json
+jf rt repo-create template.json
+```
+
+### rpm-virtual (optional)
 another option is to create a "virtual" repo and put your remotes behind it. This would allow you to cover more remote repositories with the same workflow.
 
-`jf rt repo-create template.json` where template.json is `{"key":"rpm-virtual","packageType":"rpm","rclass":"virtual","repositories":"rpm-remote"}`
+```sh
+echo '{"key":"rpm-virtual","packageType":"rpm","rclass":"virtual","repositories":"rpm-remote"}' > template.json
+jf rt repo-create template.json
+```
 
 *note: if you want your virtual to contain multiple remotes, you can add them to the template as comma separated strings in the "repositories" field*
 
@@ -54,7 +70,7 @@ then, create a slack integration [in the pipelines UI](https://www.jfrog.com/con
 
 
 # Description
-This repository is designed to create 1 pipelineSource per directory. Each pipelineSource will create 2 pipelines. One pipeline is for curation (caching something from remote to local) and the other pipeline is for promotion and distribution. 
+This repository is designed to create one pipeline source per directory. Each pipeline source will create two pipelines. One pipeline is for curation (caching something from remote to local) and the other pipeline is for promotion and distribution. 
 
 ## to use
 see above for prerequisites.
@@ -65,7 +81,7 @@ PIPELINES_API_TOKEN="<token from the setup section>"
 PIPELINES_API_URL="https://<your domain>.jfrog.io/pipelines/api/v1"
 ```
 
-create a new pipelineSource by first copying the existing example to a new directory. At the top of the "pipelines.yml" file you'll find many yaml anchors that might need to be updated or changed based on what you want your pipeline to do
+create a new pipeline source by first copying the existing example to a new directory. At the top of the "pipelines.yml" file you'll find many yaml anchors that might need to be updated or changed based on what you want your pipeline to do
 
 Once your yaml is in a good place run "createPipelineSource.sh" with the expected parameters.
 
