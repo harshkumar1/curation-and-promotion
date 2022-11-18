@@ -3,7 +3,8 @@
 configs:
   pipelineSourceName: &pipelineSourceName 'rpm_flow_again_test'
   # this is the project ID for the creating a source in the "all" context. to use other projects,
-  # use the pipelines api to GET /projects and find the project you want to add the pipeline to
+  # call the pipelines GET /projects api and from those results, you can find the project that
+  # you want to use to add a new pipeline. Get the ID from that project and add use it here.
   projectId: &projectId '2'
 projectId: *projectId
 name: *pipelineSourceName
@@ -14,8 +15,6 @@ pipelinesYmlPropertyBag:
       artifactoryIntegrationName: &artIntName 'art'
       # Distribution
       distributionIntegrationName: &distIntName 'int_distribution'
-      # IncomingWebhook
-      webhookIntegrationName:  &whIntName 'rpm_dev_local_hook'
 
     # Artifactory repositories should also be created in the Artifactory UI before executing this pipeline
     artifactoryRepositories:
@@ -36,10 +35,10 @@ pipelinesYmlPropertyBag:
     # different pipelines
     resourceDetails:
       # this is for a "PropertyBag" resource.
-      # at the end of the "curation" workflow, the list of coped files will be written
-      # to this resource.  The "promote and distribute" workflow can then use this directly
-      # it will contain a parameter called "resourceList" which will be a comma separated list
-      # of file paths
+      # at the end of the "curation" workflow, the list of copied files will be written
+      # to this resource.  The "promote and distribute" workflow can then use this resource directly
+      # as input.  It will contain a parameter called "resourceList" which will be a comma separated list
+      # of file paths.
       ### example contents
       # {"resourceList": "pipe-rpm-virtual/a.rpm,pip-rpm-virtual/b.rpm"}
       curationResourceName: &curationResName 'curated_list'
@@ -53,8 +52,8 @@ pipelinesYmlPropertyBag:
       # the name of the ReleaseBundle resource that is created to contain the artifacts from file_list
       prodRepoBundleName: &prodRepoBundle 'prod_repo_bundle'
 
-      # These resources contain the rules for distribution. In this example
-      # distribution is split between 2 sites, so each site has its own "DistributionRule" resource
+      # These resources contain the rules for Distribution. In this example
+      # Distribution is split between 2 sites, so each site has its own "DistributionRule" resource
       # see https://www.jfrog.com/confluence/display/JFROG/DistributionRule
       primarySiteDistRuleName: &siteARuleName 'site_A_rule'
       secondarySiteDistRuleName: &siteBRuleName 'site_B_rule'
@@ -66,7 +65,7 @@ pipelinesYmlPropertyBag:
 
 
     releaseBundle:
-      # The name of your release. This will appear in the distribution UI
+      # The name of your release. This will appear in the Distribution UI
       releaseName: &releaseName 'pip_rpm_prod_bundle'
 
 
