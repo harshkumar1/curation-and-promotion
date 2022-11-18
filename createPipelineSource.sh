@@ -15,7 +15,7 @@ function post_by_uri() {
   ###
 
   if [[ $# -le 1 ]]; then
-      echo "Must provide at least 1 arguments to post_by_uri" >&2
+      echo "Must provide at least 2 arguments to post_by_uri" >&2
       return 1
   fi
 
@@ -26,7 +26,7 @@ function post_by_uri() {
   shift
 
   echo "Posting by uri:  $uri with payload location: $payloadPath" >&2
-  output_dir=/tmp
+  local output_dir=/tmp
   local outputfile="postOut.json"
   if [ -f "$output_dir/$outputfile" ]; then
     rm $output_dir/$outputfile

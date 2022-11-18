@@ -28,7 +28,7 @@ function put_by_uri() {
   local payloadPath="${1}"
   shift
 
-  output_dir=/tmp
+  local output_dir=/tmp
   local outputfile="putOut.json"
   if [ -f "$output_dir/$outputfile" ]; then
     rm $output_dir/$outputfile
