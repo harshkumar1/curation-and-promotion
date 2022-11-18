@@ -15,7 +15,7 @@ function post_by_uri() {
   ###
 
   if [[ $# -le 1 ]]; then
-      echo "Must provide at least 2 arguments to post_by_uri" >&2
+      echo "Must provide 2 arguments to post_by_uri" >&2
       return 1
   fi
 

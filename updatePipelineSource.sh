@@ -11,14 +11,12 @@ function put_by_uri() {
   ###
   # $1 = the uri you want to call
   # $2 = the path to the payload to PUT. it is assumed to be a json object
-  # $3 = an (optional) alternative URL to use instead of the platform integration url
-  # $4 = an (optional) alternative auth token to use instead of the platform integration token
   #####
   ## returns the JSON response from API on stdout.
   ###
 
   if [[ $# -le 1 ]]; then
-      echo "Must provide at least 1 arguments to put_by_uri" >&2
+      echo "Must provide 2 arguments to put_by_uri" >&2
       return 1
   fi
 
