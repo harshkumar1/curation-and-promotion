@@ -5,7 +5,7 @@ configs:
   # this is the project ID for the creating a source in the "all" context. to use other projects,
   # call the pipelines GET /projects api and from those results, you can find the project that
   # you want to use to add a new pipeline. Get the ID from that project and add use it here.
-  projectId: &projectId '2'
+  projectId: &projectId '1'
 projectId: *projectId
 name: *pipelineSourceName
 pipelinesYmlPropertyBag:
