@@ -12,7 +12,7 @@ pipelinesYmlPropertyBag:
     # integrations must be created from the pipelines UI BEFORE adding this pipeline
     integrationDetails:
       # Artifactory
-      artifactoryIntegrationName: &artIntName 'art'
+      artifactoryIntegrationName: &artIntName 'Artifactory'
       # Distribution
       distributionIntegrationName: &distIntName 'int_distribution'
 
